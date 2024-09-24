@@ -1,6 +1,6 @@
 const express = require('express');
 const admin = require('firebase-admin');
-const serviceAccount = require('./ada-notification-3bf21-firebase-adminsdk-hukoq-accf143801.json');
+const serviceAccount = require('./ada-notification-3bf21-firebase-adminsdk-hukoq-6ce35535be.json');
 const TOKEN = require('./tokenDevice.json'); 
 // Khởi tạo ứng dụng Express
 const app = express();
@@ -34,7 +34,8 @@ const sendNotification = async () => {
 	const badge = 1;
 	try {
 		// Danh sách token nhận thông báo
-		const tokens = [TOKEN.IOS]; 
+		// const tokens = [TOKEN.IOS];
+		const tokens = [TOKEN.ANDROID]; 
 		console.log(tokens);
 		const title = "Thông báo";
 		const content = "đây là nội dung thông báo"
@@ -51,6 +52,7 @@ const sendNotification = async () => {
 			},
 			android: {	//gửi cho Android
 				notification: {
+					channel_id:"vn.adstechnology.tracking",
 					sound: 'default', // âm thanh mặc định
 					default_sound: true, 
 					default_vibrate_timings: true, // chế độ rung mặc định
